@@ -8,9 +8,6 @@ export default function Home() {
       {/* TODO List 제목 */}
       <h1>TODO List</h1>
 
-      {/* Search Component */}
-      <SearchComponent />
-
       {/* TODO List */}
 
       <TodoList />
