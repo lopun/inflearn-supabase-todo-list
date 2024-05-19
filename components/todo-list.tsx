@@ -25,9 +25,7 @@ export default function TodoList() {
         {todosQuery.isLoading ? (
           <div>Loading...</div>
         ) : (
-          todosQuery.data?.map((todo, index) => (
-            <Todo key={index} todo={todo} />
-          ))
+          todosQuery.data?.map((todo) => <Todo key={todo.id} todo={todo} />)
         )}
       </div>
     </>

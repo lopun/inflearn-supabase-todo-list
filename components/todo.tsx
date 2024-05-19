@@ -38,12 +38,18 @@ export default function Todo({ todo }) {
     <div className="w-full flex items-center gap-2">
       <Checkbox
         checked={isCompleted}
-        onChange={(e) => setIsCompleted(e.target.checked)}
+        onChange={async (e) => {
+          await setIsCompleted(e.target.checked);
+          updateTodoMutation.mutate();
+        }}
       />
       <input
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        className="flex-1 border-b border-b-gray-600"
+        className={`flex-1 ${isEditing && "border-b border-b-gray-600"} ${
+          isCompleted && "line-through"
+        }`}
+        disabled={!isEditing}
       />
       {isEditing ? (
         <IconButton onClick={() => updateTodoMutation.mutate()}>
